@@ -44,4 +44,5 @@ En cada línea, se incluye por empleado y profesional por horas:
 
 Al final del archivo, se incluye a manera de resumen:
 
-Subtotal (suma de montos a pagar), total de impuestos a retener, total (subtotal más total de impuestos).
+|Subtotal (suma de montos a pagar)|Total de impuestos a retener|Total (subtotal más total de impuestos)|
+|---|---|---|
