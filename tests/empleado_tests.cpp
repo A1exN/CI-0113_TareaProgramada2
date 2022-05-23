@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../src/empleadoDeNomina.h"
+#include "../src/empleadoPorHoras.h"
 
 namespace
 {
@@ -8,7 +9,7 @@ namespace
     /// AAA
 
     // Arrange - configurar el escenario
-    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1);
+    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1, 4606.19);
 
     // Act - ejecute la operación
     int id_actual = empleado->ObtenerID();
@@ -25,7 +26,7 @@ namespace
     /// AAA
 
     // Arrange - configurar el escenario
-    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1);
+    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1, 4606.19);
 
     // Act - ejecute la operación
     string nombre_actual = empleado->ObtenerNombre();
@@ -42,7 +43,7 @@ namespace
     /// AAA
 
     // Arrange - configurar el escenario
-    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1);
+    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1, 4606.19);
 
     // Act - ejecute la operación
     string apellido_actual = empleado->ObtenerApellido();
@@ -59,7 +60,7 @@ namespace
     /// AAA
 
     // Arrange - configurar el escenario
-    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1);
+    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1, 4606.19);
 
     // Act - ejecute la operación
     string email_actual = empleado->ObtenerEmail();
@@ -76,7 +77,7 @@ namespace
     /// AAA
 
     // Arrange - configurar el escenario
-    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1);
+    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1, 4606.19);
 
     // Act - ejecute la operación
     int tipoDeEmpleado_actual = empleado->ObtenerTipoEmpleado();
@@ -93,8 +94,8 @@ namespace
     /// AAA
 
     // Arrange - configurar el escenario
-    EmpleadoDeNomina* supervisor = new EmpleadoDeNomina(1, "Denis", "Tyler", "denis_tyler@biz.com", 1);
-    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1);
+    EmpleadoDeNomina* supervisor = new EmpleadoDeNomina(1, "Denis", "Tyler", "denis_tyler@biz.com", 1, 5000);
+    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1, 4606.19);
     empleado->AsignarSupervisor(supervisor);
 
     // Act - ejecute la operación
@@ -113,12 +114,28 @@ namespace
     /// AAA
 
     // Arrange - configurar el escenario
-    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1);
-    empleado->AsignarSalarioMensualBruto(4606.19);
+    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1, 4606.19);
 
     // Act - ejecute la operación
     float salario_actual = empleado->CalculoPago();
     float salario_esperado = 4283.7567;
+
+    // Assert - valide los resultados
+    ASSERT_FLOAT_EQ(salario_actual, salario_esperado);
+
+    delete empleado;
+  }
+
+  TEST(empleado_por_horas, calcular_salario)
+  {
+    /// AAA
+
+    // Arrange - configurar el escenario
+    EmpleadoPorHoras* empleado = new EmpleadoPorHoras(451, "Ryan", "Webster", "Ryan_Webster6612@hourpy.biz", 2, 42.26, 55);
+
+    // Act - ejecute la operación
+    float salario_actual = empleado->CalculoPago();
+    float salario_esperado = 2324.3;
 
     // Assert - valide los resultados
     ASSERT_FLOAT_EQ(salario_actual, salario_esperado);
