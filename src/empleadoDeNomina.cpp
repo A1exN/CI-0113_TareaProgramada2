@@ -11,6 +11,11 @@ EmpleadoDeNomina::EmpleadoDeNomina(int id_empleado, string nombre, string apelli
     this->tipoEmpleado = tipoEmpleado;
 }
 
+EmpleadoDeNomina::~EmpleadoDeNomina()
+{
+    
+}
+
 void EmpleadoDeNomina::AsignarSalarioMensualBruto(float salarioMensualBruto)
 {
     this->salarioMensualBruto = salarioMensualBruto;
