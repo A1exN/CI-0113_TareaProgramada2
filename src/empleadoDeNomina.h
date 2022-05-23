@@ -10,7 +10,7 @@ class EmpleadoDeNomina : public Empleado {
     float salarioMensualBruto;
 
     public:
-    EmpleadoDeNomina(int id_empleado, string nombre, string apellido, string email, int tipoEmpleado);
+    EmpleadoDeNomina(int id_empleado, string nombre, string apellido, string email, int tipoEmpleado, float salarioMensualBruto);
     ~EmpleadoDeNomina();
 
     void AsignarSalarioMensualBruto(float salarioMensualBruto);
