@@ -107,4 +107,22 @@ namespace
     delete supervisor;
     delete empleado;
   }
+
+  TEST(empleado_nomina_tests, calcular_salario)
+  {
+    /// AAA
+
+    // Arrange - configurar el escenario
+    EmpleadoDeNomina* empleado = new EmpleadoDeNomina(4, "Alan", "Patel", "alan_patel@biz.com", 1);
+    empleado->AsignarSalarioMensualBruto(4606.19);
+
+    // Act - ejecute la operación
+    float salario_actual = empleado->CalculoPago();
+    float salario_esperado = 4283.7567;
+
+    // Assert - valide los resultados
+    ASSERT_FLOAT_EQ(salario_actual, salario_esperado);
+
+    delete empleado;
+  }
 }
