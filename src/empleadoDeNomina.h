@@ -3,6 +3,7 @@
 
 #include "empleado.h"
 
+
 using namespace std;
 
 class EmpleadoDeNomina : public Empleado {
@@ -10,10 +11,10 @@ class EmpleadoDeNomina : public Empleado {
     float salarioMensualBruto;
 
     public:
-    EmpleadoDeNomina(int id_empleado, string nombre, string apellido, string email, int tipoEmpleado, float salarioMensualBruto);
+    EmpleadoDeNomina();
     ~EmpleadoDeNomina();
 
-    void AsignarSalarioMensualBruto(float salarioMensualBruto);
+    void AsignarInformacionDePago(float salarioMensualBruto);
     virtual float CalculoPago();
 
 };

@@ -2,19 +2,22 @@
 
 using namespace std;
 
-EmpleadoDeNomina::EmpleadoDeNomina(int id_empleado, string nombre, string apellido, string email, int tipoEmpleado, float salarioMensualBruto)
+EmpleadoDeNomina::EmpleadoDeNomina()
 {
-    this->id_empleado = id_empleado;
-    this->nombre = nombre;
-    this->apellido = apellido;
-    this->email = email;
-    this->tipoEmpleado = tipoEmpleado;
-    this->salarioMensualBruto = salarioMensualBruto;
+
 }
 
 EmpleadoDeNomina::~EmpleadoDeNomina()
 {
-    
+    for (Empleado* empleado : this->subordinados)
+    {
+        delete empleado;
+    }
+}
+
+void EmpleadoDeNomina::AsignarInformacionDePago(float salarioMensualBruto)
+{
+    this->salarioMensualBruto = salarioMensualBruto;
 }
 
 float EmpleadoDeNomina::CalculoPago()

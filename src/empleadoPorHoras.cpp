@@ -2,20 +2,23 @@
 
 using namespace std;
 
-EmpleadoPorHoras::EmpleadoPorHoras(int id_empleado, string nombre, string apellido, string email, int tipoEmpleado, float costoPorHoras, int horasEnMes)
+EmpleadoPorHoras::EmpleadoPorHoras()
 {
-    this->id_empleado = id_empleado;
-    this->nombre = nombre;
-    this->apellido = apellido;
-    this->email = email;
-    this->tipoEmpleado = tipoEmpleado;
-    this->costoPorHoras = costoPorHoras;
-    this->horasEnMes = horasEnMes;
+
 }
 
 EmpleadoPorHoras::~EmpleadoPorHoras()
 {
-    
+    for (Empleado* empleado : this->subordinados)
+    {
+        delete empleado;
+    }
+}
+
+void EmpleadoPorHoras::AsignarInformacionDePago(float montoPorHora, int horasLaboradas)
+{
+    this->costoPorHoras = montoPorHora;
+    this->horasEnMes = horasLaboradas;
 }
 
 float EmpleadoPorHoras::CalculoPago()

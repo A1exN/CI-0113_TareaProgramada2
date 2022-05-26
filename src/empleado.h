@@ -1,6 +1,7 @@
 #ifndef EMPLEADO_H
 #define EMPLEADO_H
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -13,6 +14,7 @@ class Empleado {
     protected:
     int tipoEmpleado;
     int id_empleado;
+    int id_supervisor;
     string nombre;
     string apellido;
     string email;
@@ -25,19 +27,17 @@ class Empleado {
 
     void AsignarSubordinado(Empleado *empleado);
 
-    int ObtenerTipoEmpleado();
-
     int ObtenerID();
 
-    string ObtenerNombre();
-
-    string ObtenerApellido();
-
-    string ObtenerEmail();
+    int ObtenerIDSupervisor();
 
     Empleado *ObtenerSupervisor();
 
     vector <Empleado *> ObtenerSubordinados();
+
+    friend istream& operator >> (istream &i, Empleado *empleado);
+
+    friend ostream& operator << (ostream &o, Empleado *empleado);
 
     virtual float CalculoPago() = 0;
 

@@ -11,7 +11,7 @@
             "program": "${workspaceFolder}/bin/planilla",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspacefolder}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb", // lldb in Mac, gdb in Linux/WSL

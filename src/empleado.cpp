@@ -10,29 +10,14 @@ void Empleado::AsignarSubordinado(Empleado *empleado)
     this->subordinados.push_back(empleado);
 }
 
-int Empleado::ObtenerTipoEmpleado()
-{
-    return this->tipoEmpleado;
-}
-
 int Empleado::ObtenerID()
 {
     return this->id_empleado;
 }
 
-string Empleado::ObtenerNombre()
+int Empleado::ObtenerIDSupervisor()
 {
-    return this->nombre;
-}
-
-string Empleado::ObtenerApellido()
-{
-    return this->apellido;
-}
-
-string Empleado::ObtenerEmail()
-{
-    return this->email;
+    return this->id_supervisor;
 }
 
 Empleado *Empleado::ObtenerSupervisor()
@@ -43,4 +28,33 @@ Empleado *Empleado::ObtenerSupervisor()
 vector <Empleado *> Empleado::ObtenerSubordinados()
 {
     return this->subordinados;
+}
+
+istream& operator >> (istream &i, Empleado *empleado)
+{
+    i >> empleado->id_empleado
+      >> empleado->nombre 
+      >> empleado->apellido 
+      >> empleado->email 
+      >> empleado->tipoEmpleado 
+      >> empleado->id_supervisor;
+
+    return i;
+}
+
+ostream& operator << (ostream &o, Empleado *empleado)
+{
+    if (empleado->id_empleado == 1)
+    {
+        o << empleado->id_empleado << ","
+            << empleado->nombre + " " + empleado->apellido << ","
+            << empleado->nombre + " " + empleado->apellido << ","
+            << empleado->CalculoPago();
+    } else {
+    o << empleado->id_empleado << ","
+      << empleado->nombre + " " + empleado->apellido << ","
+      << empleado->supervisor->nombre + " " + empleado->supervisor->apellido << ","
+      << empleado->CalculoPago();
+    }
+    return o;
 }
