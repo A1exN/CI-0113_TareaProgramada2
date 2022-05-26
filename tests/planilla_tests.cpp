@@ -3,58 +3,30 @@
 
 namespace
 {
-  TEST(planilla_tests, agregar_director)
+  TEST(planilla_tests, generar_reporte_test)
   {
     /// AAA
 
     // Arrange - configurar el escenario
+    string empleados = "1 Denis Tyler denis_tyler@biz.com 1 1\n";
+    empleados += "2 Alan Patel alan_patel@biz.com 2 1";
+    string nomina = "1 4600.98";
+    string horasTrabajadas = "2 42.26 55";
+    istringstream streamEmpleado(empleados);
+    istringstream streamNomina(nomina);
+    istringstream streamHorasTrabajadas(horasTrabajadas);
+    ostringstream reporte;
+
 
     // Act - ejecute la operación
-    Planilla* planilla = new Planilla(1, "Denis", "Tayler", "denis_tyler@biz.com", 1, 4600.98);
-
-    string nombre_actual = planilla->ObtenerEmpleado(1)->ObtenerNombre();
-    string nombre_esperado = "Denis";
-
-    // Assert - valide los resultados
-    ASSERT_EQ(nombre_actual, nombre_esperado);
-
-    delete planilla;
-  }
-
-  TEST(planilla_tests, agregar_empleado_nomina)
-  {
-    /// AAA
-
-    // Arrange - configurar el escenario
-    Planilla* planilla = new Planilla(1, "Denis", "Tayler", "denis_tyler@biz.com", 1, 4600.98);
-
-    // Act - ejecute la operación
-    planilla->InsertarEmpleado(2, "Clarissa", "Parker", "clarissa_parker@biz.com", 1, 1, 3097.5);
-    //string nombre_actual = planilla->ObtenerEmpleado(1)->ObtenerSubordinados().at(0)->ObtenerNombre();
-    string nombre_actual = planilla->ObtenerEmpleado(2)->ObtenerNombre();
-    string nombre_esperado = "Clarissa";
+    Planilla* planilla = new Planilla(&streamEmpleado, &streamNomina, &streamHorasTrabajadas, &reporte);
+    planilla->GenerarReporte();
+    string reporte_actual = reporte.str();
+    string reporte_esperado = "1,Denis Tyler,Denis Tyler,4278.91\n2,Alan Patel,Denis Tyler,2324.3\n\n";
+           reporte_esperado += ",Subtotal,Total Impuestos,Total\n,6603.21,322.07,6925.28";
 
     // Assert - valide los resultados
-    ASSERT_EQ(nombre_actual, nombre_esperado);
-
-    delete planilla;
-  }
-
-  TEST(planilla_tests, agregar_empleado_por_horas)
-  {
-    /// AAA
-
-    // Arrange - configurar el escenario
-    Planilla* planilla = new Planilla(1, "Denis", "Tayler", "denis_tyler@biz.com", 1, 4600.98);
-
-    // Act - ejecute la operación
-    planilla->InsertarEmpleado(2, "Ryan", "Webster", "Ryan_Webster6612@hourpy.biz", 2, 1, 42.26, 55);
-    //string nombre_actual = planilla->ObtenerEmpleado(1)->ObtenerSubordinados().at(0)->ObtenerNombre();
-    string nombre_actual = planilla->ObtenerEmpleado(2)->ObtenerNombre();
-    string nombre_esperado = "Ryan";
-
-    // Assert - valide los resultados
-    ASSERT_EQ(nombre_actual, nombre_esperado);
+    ASSERT_EQ(reporte_actual, reporte_esperado);
 
     delete planilla;
   }
