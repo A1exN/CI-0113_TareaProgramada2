@@ -46,3 +46,28 @@ Al final del archivo, se incluye a manera de resumen:
 
 |Subtotal (suma de montos a pagar)|Total de impuestos a retener|Total (subtotal más total de impuestos)|
 |---|---|---|
+
+## Ejecución
+
+Para correr el programa ejecute:
+```
+make
+``` 
+``` 
+./bin/planilla
+```
+
+Para eliminar los ejecutables:
+``` 
+make clean
+```
+
+## Pruebas Unitarias
+
+Para correr las pruebas unitarias ejecute:
+```
+make test
+``` 
+``` 
+./bin/tests
+```
